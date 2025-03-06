@@ -18,8 +18,8 @@ When building TB-level cache systems for large-scale LLM (e.g., storing or pagin
 
 Following the paper’s architecture, moving GC and mapping to the application layer eliminates the redundant FTL overhead in commercial SSDs. In this simplified version, we simulate open-channel SSD behavior via RocksDB for easy portability.
 
-# Main Features
-- Slab Mangement
+# Implementation
+- Slab Management
   - Partition the “flash space” into slabs, each contains multiple 4KB blocks.
   - A slab is represented by a Slab struct with a freeBlocks set.
 
@@ -72,6 +72,11 @@ Or replace the path of -I and -L (where the RocksDB is installed):
 g++ -o flash_kv_cache flash_kv_cache.cpp -I/usr/local/include -L/usr/local/lib -lrocksdb -std=c++17
 ./flash_kv_cache
 ```
+
+# Evaluation Results
+Get Throughput (Operations per Second)
+![Figure_1](https://github.com/user-attachments/assets/11ef3ba4-d17c-4bb4-a1de-ae8138539055)
+
 
 # References
 - Paper: Shen, Z. et al. “Optimizing Flash-based Key-value Cache Systems.” HotStorage 2016
