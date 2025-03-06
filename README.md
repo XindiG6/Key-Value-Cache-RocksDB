@@ -4,7 +4,7 @@ This repository demonstrates a simplified implementation of a flash-based key-va
 It uses RocksDB to emulate the underlying open-channel SSD, while focusing on:
 - Slab-based space management
 - Single-level mapping (key → (slab, block))
-- Application-driven GC (quick clean)
+- Application-driven GC (LRU based quick clean)
 - A minimal Over-Provisioning design (watermarks)
   
 Note: This prototype is purely for educational & demonstration purposes. It does not represent a production-grade solution.
