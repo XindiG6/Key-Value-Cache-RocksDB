@@ -19,8 +19,60 @@ When building TB-level cache systems for large-scale LLM (e.g., storing or pagin
 Following the paper’s architecture, moving GC and mapping to the application layer eliminates the redundant FTL overhead in commercial SSDs. In this simplified version, we simulate open-channel SSD behavior via RocksDB for easy portability.
 
 # Main Features
-Slab-based Key-Value Cache
+- Slab Mangement
+  - Partition the “flash space” into slabs, each contains multiple 4KB blocks.
+  - A slab is represented by a Slab struct with a freeBlocks set.
 
-We partition the “flash space” into slabs, each containing multiple 4KB blocks.
-A slab is represented by a Slab struct with a freeBlocks set.
-Single-level Mapping
+- Single-level Mapping
+  - The application keeps a simple hash map from userKey → (slabID, blockIndex).
+  - No device-level FTL mapping is needed.
+
+- Application-driven GC
+   - When no free blocks are available, runGC() will fully erase a victim slab (quick clean).
+
+- Dynamic Over-Provisioning (OP)
+  - A minimal design that changes watermarks (low/high) to “expand” or “shrink” OP size depending on the number of free slabs.
+
+- RocksDB Emulation
+  - Instead of a real open-channel SSD driver, we store each 4KB chunk as a (key, value) pair in RocksDB.
+  - RocksDB keys look like &lt;channel ID&gt;:&lt;block ID&gt;.
+
+# Dependencies
+- C++17 compiler
+- Prepare for the dependencies of RocksDB: https://github.com/facebook/rocksdb/blob/main/INSTALL.md
+- RocksDB
+
+Linux:
+```
+git clone https://github.com/facebook/rocksdb.git
+cd rocksdb
+make shared_lib
+sudo make install
+```
+MacOS with Homebrew:
+```
+brew install rocksdb
+```
+# Build & Run
+If install RocksDB with homebrew:
+```
+g++ -o flash_kv_cache flash_kv_cache.cpp \
+    -I/opt/homebrew/include \
+    -L/opt/homebrew/lib -lrocksdb -std=c++17
+./flash_kv_cache
+```
+If install RocksDB locally:
+```
+g++ -o flash_kv_cache flash_kv_cache.cpp -lrocksdb -std=c++17
+./flash_kv_cache
+```
+
+Or replace the path of -I and -L (where the RocksDB is installed):
+```
+g++ -o flash_kv_cache flash_kv_cache.cpp -I/usr/local/include -L/usr/local/lib -lrocksdb -std=c++17
+./flash_kv_cache
+```
+
+# References
+- Paper: Shen, Z. et al. “Optimizing Flash-based Key-value Cache Systems.” HotStorage 2016
+- RocksDB: https://github.com/facebook/rocksdb
