@@ -76,9 +76,8 @@ g++ -o flash_kv_cache flash_kv_cache.cpp -I/usr/local/include -L/usr/local/lib -
 # Evaluation Results
 Set Throughput
 
-![Figure_1](https://github.com/user-attachments/assets/9f342b87-cdba-44df-b94b-4fa989b3e9e4)
-
-![output](https://github.com/user-attachments/assets/4373d5ac-df89-4a60-aed2-1c9add459bf4)
+![set](https://github.com/user-attachments/assets/38c11608-e0dc-48cf-adf0-8f524ece6563)
+![slabnum](https://github.com/user-attachments/assets/f055606d-6a72-4d56-b53a-54086083ab75)
 
 GC Invoked Count
 ![gc_counts](https://github.com/user-attachments/assets/64238169-de70-4d20-8001-5aa83e914ee4)
