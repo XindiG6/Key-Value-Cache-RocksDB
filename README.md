@@ -80,10 +80,12 @@ blocksPerSlab=128, numChannels=2, overprovisionRatio=0.2, Operations = 30000 </b
 Set Throughput
 
 ![set](https://github.com/user-attachments/assets/38c11608-e0dc-48cf-adf0-8f524ece6563)
-![slabnum](https://github.com/user-attachments/assets/f055606d-6a72-4d56-b53a-54086083ab75)
+![set](https://github.com/user-attachments/assets/ea9140fc-13ba-4477-bbfe-d2e10f8a330e)
+
 
 Get Throughput
-![get](https://github.com/user-attachments/assets/d0b863b1-de03-458a-936f-8ec14aea3665)
+
+![get](https://github.com/user-attachments/assets/22ba319c-141f-45f7-bf96-1fac8553fbd1)
 
 
 GC Invoked Count
