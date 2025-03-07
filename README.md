@@ -77,13 +77,18 @@ g++ -o flash_kv_cache flash_kv_cache.cpp -I/usr/local/include -L/usr/local/lib -
 Setups:
 blocksPerSlab=128, numChannels=2, overprovisionRatio=0.2, Operations = 30000 </br>
 
-Set Throughput
+Set Throughput</br>
+totalSlabs = 10
 
 ![set](https://github.com/user-attachments/assets/38c11608-e0dc-48cf-adf0-8f524ece6563)
 ![set](https://github.com/user-attachments/assets/ea9140fc-13ba-4477-bbfe-d2e10f8a330e)
 
 
-Get Throughput
+Get Throughput</br>
+
+totalSlabs = 10
+
+![get_10](https://github.com/user-attachments/assets/008cb4cd-55d0-43b3-beb6-910885caaa82)
 
 ![get](https://github.com/user-attachments/assets/22ba319c-141f-45f7-bf96-1fac8553fbd1)
 
