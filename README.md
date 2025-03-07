@@ -18,7 +18,8 @@ When building TB-level cache systems for large-scale LLM (e.g., storing or pagin
 
 Following the paper’s architecture, moving GC and mapping to the application layer eliminates the redundant FTL overhead in commercial SSDs. In this simplified version, we simulate open-channel SSD behavior via RocksDB for easy portability.
 
-# Implementation
+# Design
+
 - Slab Management
   - Partition the “flash space” into slabs, each contains multiple 4KB blocks.
   - A slab is represented by a Slab struct with a freeBlocks set.
@@ -36,6 +37,19 @@ Following the paper’s architecture, moving GC and mapping to the application l
 - RocksDB Emulation
   - Instead of a real open-channel SSD driver, we store each 4KB chunk as a (key, value) pair in RocksDB.
   - RocksDB keys look like &lt;channel ID&gt;:&lt;block ID&gt;.
+ 
+# Implementation
+
+- RocksDBWrapper (Emulate Open Channel SSD)
+  - Provides a simple key-value interface to store and retrieve 4KB blocks.
+  - Supports PUT, GET, and DELETE operations on RocksDB.
+  - Each key-value pair maps to one flash block.
+
+- KeyValueCache (Slab-Based Cache Manager)
+  - Manages slabs, allocation, and eviction.
+  - Maintains active and free slab queues.
+  - Implements GC and OP strategies to optimize flash usage.
+  - Tracks access frequency for LRU-based GC.
 
 # Dependencies
 - C++17 compiler
@@ -53,6 +67,7 @@ MacOS with Homebrew:
 ```
 brew install rocksdb
 ```
+
 # Build & Run
 If install RocksDB with homebrew:
 ```
@@ -72,6 +87,25 @@ Or replace the path of -I and -L (where the RocksDB is installed):
 g++ -o flash_kv_cache flash_kv_cache.cpp -I/usr/local/include -L/usr/local/lib -lrocksdb -std=c++17
 ./flash_kv_cache
 ```
+
+# Expected Outputs
+GC logs
+- "[GC] #3 Freed slab=slab_1, blocksDeleted=128, totalDeletedBlocks=384..."</br>
+Shows each garbage collection event, how many blocks were deleted, and total stats so far.
+
+Over-Provisioning Logs
+- "[OPS shrunk] freeSlabs=9, newLow=1, newHigh=2"
+- "[OPS expanded] freeSlabs=0, newLow=256, newHigh=256"</br>
+Indicate when the minimal watermarks logic changes the size of OP (in a conceptual sense).
+
+Benchmark
+- "[BENCH] PUT: 30000 ops in 0.35s => 85714.29 ops/s"
+- "[BENCH] GET: 30000 ops in 0.02s => 1500000.00 ops/s" </br>
+GET and PUT throughputs.
+  
+Surviving Keys
+- [FOUND] 1200 / 30000 </br>
+1200 keys remain after repeated GCs. The system is a cache with “quick clean” GC, so older data may be discarded based on LRU.
 
 # Evaluation Results
 Setups:
