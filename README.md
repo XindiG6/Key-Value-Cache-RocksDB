@@ -74,10 +74,17 @@ g++ -o flash_kv_cache flash_kv_cache.cpp -I/usr/local/include -L/usr/local/lib -
 ```
 
 # Evaluation Results
+Setups:
+blocksPerSlab=128, numChannels=2, overprovisionRatio=0.2, Operations = 30000 </br>
+
 Set Throughput
 
 ![set](https://github.com/user-attachments/assets/38c11608-e0dc-48cf-adf0-8f524ece6563)
 ![slabnum](https://github.com/user-attachments/assets/f055606d-6a72-4d56-b53a-54086083ab75)
+
+Get Throughput
+![get](https://github.com/user-attachments/assets/d0b863b1-de03-458a-936f-8ec14aea3665)
+
 
 GC Invoked Count
 ![gc_counts](https://github.com/user-attachments/assets/64238169-de70-4d20-8001-5aa83e914ee4)
