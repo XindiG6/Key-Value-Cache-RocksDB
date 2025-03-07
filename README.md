@@ -81,22 +81,18 @@ Set Throughput</br>
 totalSlabs = 10
 
 ![set](https://github.com/user-attachments/assets/38c11608-e0dc-48cf-adf0-8f524ece6563)
-![set](https://github.com/user-attachments/assets/5053a795-9141-4b54-9b8e-6a420084f87c)
-
-
+![set](https://github.com/user-attachments/assets/fed33ca8-5495-4488-b389-9ce56fd10b89)
 
 Get Throughput</br>
 
 totalSlabs = 10
 
 ![get_10](https://github.com/user-attachments/assets/008cb4cd-55d0-43b3-beb6-910885caaa82)
-![get](https://github.com/user-attachments/assets/e58241dc-e27a-40d6-9132-44a95bc7c69b)
-
+![get](https://github.com/user-attachments/assets/d7cf6c51-dd0c-4088-890d-a8a0f328bd9d)
 
 GC Invoked Count
+
 ![gc_count](https://github.com/user-attachments/assets/83d04beb-a388-4970-8e1b-a0290fb3fdc7)
-
-
 
 
 # References
