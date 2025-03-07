@@ -29,7 +29,7 @@ Following the paper’s architecture, moving GC and mapping to the application l
   - No device-level FTL mapping is needed.
 
 - Application-driven GC
-   - When no free blocks are available, runGC() will fully erase a victim slab (quick clean).
+   - When no free blocks are available, runGC() will fully erase a victim slab (quick clean) based on LRU.
 
 - Dynamic Over-Provisioning (OP)
   - A minimal design that changes watermarks (low/high) to “expand” or “shrink” OP size depending on the number of free slabs.
