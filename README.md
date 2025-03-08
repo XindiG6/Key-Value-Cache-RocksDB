@@ -112,9 +112,8 @@ Setups:
 blocksPerSlab=128, numChannels=2, overprovisionRatio=0.2, Operations = 30000 </br>
 
 Set Throughput</br>
-totalSlabs = 10
+![set-vs-slab](https://github.com/user-attachments/assets/dae28616-6d53-4d8b-9540-4a75ff1ee9a2)
 
-![set](https://github.com/user-attachments/assets/38c11608-e0dc-48cf-adf0-8f524ece6563)
 ![set](https://github.com/user-attachments/assets/fed33ca8-5495-4488-b389-9ce56fd10b89)
 
 Get Throughput</br>
