@@ -123,6 +123,10 @@ totalSlabs = 10
 ![get_10](https://github.com/user-attachments/assets/008cb4cd-55d0-43b3-beb6-910885caaa82)
 ![get](https://github.com/user-attachments/assets/d7cf6c51-dd0c-4088-890d-a8a0f328bd9d)
 
+Set Latency </br>
+![set-latency](https://github.com/user-attachments/assets/e41083ef-69b8-4844-9164-e01eda7dd47e)
+
+
 GC Invoked Count
 
 ![gc_count](https://github.com/user-attachments/assets/83d04beb-a388-4970-8e1b-a0290fb3fdc7)
