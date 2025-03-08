@@ -116,13 +116,6 @@ Set Throughput</br>
 
 ![set](https://github.com/user-attachments/assets/fed33ca8-5495-4488-b389-9ce56fd10b89)
 
-Get Throughput</br>
-
-totalSlabs = 10
-
-![get_10](https://github.com/user-attachments/assets/008cb4cd-55d0-43b3-beb6-910885caaa82)
-![get](https://github.com/user-attachments/assets/d7cf6c51-dd0c-4088-890d-a8a0f328bd9d)
-
 Set Latency </br>
 ![set-latency](https://github.com/user-attachments/assets/33814024-85ed-4fae-ad88-be01c419c1aa)
 
