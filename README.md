@@ -119,10 +119,6 @@ Set Throughput</br>
 Set Latency </br>
 ![set-latency](https://github.com/user-attachments/assets/33814024-85ed-4fae-ad88-be01c419c1aa)
 
-GC Invoked Count
-
-![gc_count](https://github.com/user-attachments/assets/83d04beb-a388-4970-8e1b-a0290fb3fdc7)
-
 
 # References
 - Paper: Shen, Z. et al. “Optimizing Flash-based Key-value Cache Systems.” HotStorage 2016
