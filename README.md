@@ -89,20 +89,20 @@ g++ -o flash_kv_cache flash_kv_cache.cpp -I/usr/local/include -L/usr/local/lib -
 ```
 
 # Expected Outputs
-Managing OP: Free slabs = 100, Reserve slabs = 0, Active slabs = 0
-Post OP management: Free slabs = 80, Reserve slabs: 20, Active slabs: 0
+Managing OP: Free slabs = 100, Reserve slabs = 0, Active slabs = 0</br>
+Post OP management: Free slabs = 80, Reserve slabs: 20, Active slabs: 0</br>
 
-=== Running Randomized GC & OP Test with Object Size ===
-Generating 10000 random operations with variable object size...
-Free slabs: 0 | Active slabs: 80
-Triggering GC due to low free slabs...
-Managing OP: Free slabs = 0, Reserve slabs = 20, Active slabs = 80
-Post OP management: Free slabs = 30, Reserve slabs: 0, Active slabs: 71
-Free slabs: 30 | Active slabs: 71
-Checking if old keys are deleted after GC...
-Deleted keys after GC: 6524/10000
-Adding new keys after GC to check reallocation...
-Free slabs: 0 | Active slabs: 101
+=== Running Randomized GC & OP Test with Object Size ===</br>
+Generating 10000 random operations with variable object size...</br>
+Free slabs: 0 | Active slabs: 80</br>
+Triggering GC due to low free slabs...</br>
+Managing OP: Free slabs = 0, Reserve slabs = 20, Active slabs = 80</br>
+Post OP management: Free slabs = 30, Reserve slabs: 0, Active slabs: 71</br>
+Free slabs: 30 | Active slabs: 71</br>
+Checking if old keys are deleted after GC...</br>
+Deleted keys after GC: 6524/10000</br>
+Adding new keys after GC to check reallocation...</br>
+Free slabs: 0 | Active slabs: 101</br>
 
 # Evaluation Results
 Setups:
