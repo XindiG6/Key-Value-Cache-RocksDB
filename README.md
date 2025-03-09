@@ -89,23 +89,20 @@ g++ -o flash_kv_cache flash_kv_cache.cpp -I/usr/local/include -L/usr/local/lib -
 ```
 
 # Expected Outputs
-GC logs
-- "[GC] #3 Freed slab=slab_1, blocksDeleted=128, totalDeletedBlocks=384..."</br>
-Shows each garbage collection event, how many blocks were deleted, and total stats so far.
+Managing OP: Free slabs = 100, Reserve slabs = 0, Active slabs = 0
+Post OP management: Free slabs = 80, Reserve slabs: 20, Active slabs: 0
 
-Over-Provisioning Logs
-- "[OPS shrunk] freeSlabs=9, newLow=1, newHigh=2"
-- "[OPS expanded] freeSlabs=0, newLow=256, newHigh=256"</br>
-Indicate when the minimal watermarks logic changes the size of OP (in a conceptual sense).
-
-Benchmark
-- "[BENCH] PUT: 30000 ops in 0.35s => 85714.29 ops/s"
-- "[BENCH] GET: 30000 ops in 0.02s => 1500000.00 ops/s" </br>
-GET and PUT throughputs.
-  
-Surviving Keys
-- [FOUND] 1200 / 30000 </br>
-1200 keys remain after repeated GCs. The system is a cache with “quick clean” GC, so older data may be discarded based on LRU.
+=== Running Randomized GC & OP Test with Object Size ===
+Generating 10000 random operations with variable object size...
+Free slabs: 0 | Active slabs: 80
+Triggering GC due to low free slabs...
+Managing OP: Free slabs = 0, Reserve slabs = 20, Active slabs = 80
+Post OP management: Free slabs = 30, Reserve slabs: 0, Active slabs: 71
+Free slabs: 30 | Active slabs: 71
+Checking if old keys are deleted after GC...
+Deleted keys after GC: 6524/10000
+Adding new keys after GC to check reallocation...
+Free slabs: 0 | Active slabs: 101
 
 # Evaluation Results
 Setups:
