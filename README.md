@@ -108,13 +108,11 @@ Free slabs: 0 | Active slabs: 101</br>
 Setups:
 blocksPerSlab=128, numChannels=2, overprovisionRatio=0.2, Operations = 30000 </br>
 
-Set Throughput</br>
-![set-vs-slab](https://github.com/user-attachments/assets/dae28616-6d53-4d8b-9540-4a75ff1ee9a2)
+Throughput</br>
+![output (28)](https://github.com/user-attachments/assets/fc1ac8c4-e5a9-4a4e-9bc6-0afc5baf28b5)
 
-![set](https://github.com/user-attachments/assets/fed33ca8-5495-4488-b389-9ce56fd10b89)
-
-Set Latency </br>
-![set-latency](https://github.com/user-attachments/assets/33814024-85ed-4fae-ad88-be01c419c1aa)
+Latency </br>
+![output (29)](https://github.com/user-attachments/assets/bd410851-fc6d-44b0-88e1-0d5bf70e41c3)
 
 
 # References
