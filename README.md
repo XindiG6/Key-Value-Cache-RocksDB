@@ -1,22 +1,13 @@
 # Key-Value-Cache-RocksDB
 This repository demonstrates a simplified implementation of a flash-based key-value cache system inspired by the “Optimizing Flash-based Key-value Cache Systems” paper.
 
-It uses RocksDB to emulate the underlying open-channel SSD, while focusing on:
-- Slab-based space management
-- Single-level mapping (key → (slab, block))
-- Application-driven GC (LRU based quick clean)
-- A minimal Over-Provisioning design (watermarks)
-  
-Note: This prototype is purely for educational & demonstration purposes. It does not represent a production-grade solution.
-
 # Background
-When building TB-level cache systems for large-scale LLM (e.g., storing or paging out vLLM pages, retrieving doc embeddings in RAG scenarios), efficient flash-based KV caches are critical for:
+Designing an extremely large KVCache system, that can support TB-level vLLM pages offloaded from GPU memory or CPU memory to SSDs during the LLM inference. At the same time, the cache can also support RAG and other LLM-related applications. Therefore, it is important to design an efficient flash-based cache framework for large-scale LLMs. 
+Following the paper’s architecture, moving GC and mapping to the application layer eliminates the redundant FTL overhead in commercial SSDs. In this simplified version, simulating open-channel SSD behavior via RocksDB.
 
-- Cost: DRAM is expensive; flash storage offers a cheaper memory tier.
-- Performance: Minimizing write amplification & GC overhead is essential for stable throughput.
-- Scalability: Dynamic Over-Provisioning can adapt to changing write loads.
-
-Following the paper’s architecture, moving GC and mapping to the application layer eliminates the redundant FTL overhead in commercial SSDs. In this simplified version, we simulate open-channel SSD behavior via RocksDB for easy portability.
+Why using RocksDB:
+- RocksDB makes it significantly easier to build a high-performance key-value cache without worrying about raw SSD constraints, write amplification, or manual flash optimizations, which allows to focus on just cache logic.
+- Great flexibility and portability, making the cache system deployable across different infrastructures (local, cloud, and disaggregated systems).
 
 # Design
 
