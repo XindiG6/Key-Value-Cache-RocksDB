@@ -1,46 +1,33 @@
 # Key-Value-Cache-RocksDB
-This repository demonstrates a simplified implementation of a flash-based key-value cache system inspired by the “Optimizing Flash-based Key-value Cache Systems” paper.
+This repository demonstrates a simplified implementation of a flash-based key-value cache system with RocksDB. Basic design is inspired by the “Optimizing Flash-based Key-value Cache Systems” paper.
 
 # Background
 Designing an extremely large KVCache system, that can support TB-level vLLM pages offloaded from GPU memory or CPU memory to SSDs during the LLM inference. At the same time, the cache can also support RAG and other LLM-related applications. Therefore, it is important to design an efficient flash-based cache framework for large-scale LLMs. 
-Following the paper’s architecture, moving GC and mapping to the application layer eliminates the redundant FTL overhead in commercial SSDs. In this simplified version, simulating open-channel SSD behavior via RocksDB.
+Following the paper’s architecture, moving GC and mapping to the application layer eliminates the redundant FTL overhead in commercial SSDs. In this simplified version, open-channel SSD behavior is simulated via RocksDB.
 
-Why using RocksDB:
-- RocksDB makes it significantly easier to build a high-performance key-value cache without worrying about raw SSD constraints, write amplification, or manual flash optimizations, which allows to focus on just cache logic.
+Why use RocksDB:
+- RocksDB makes it significantly easier to build a high-performance key-value cache without worrying about raw SSD constraints, simply focus on just cache logic.
 - Great flexibility and portability, making the cache system deployable across different infrastructures (local, cloud, and disaggregated systems).
 
 # Design
-
 - Slab Management
-  - Partition the “flash space” into slabs, each contains multiple 4KB blocks.
-  - A slab is represented by a Slab struct with a freeBlocks set.
+  - Partition the "flash space" into slabs, each containing multiple 4KB blocks.
+  - slab is represented by a Slab struct with a free_blocks set for tracking available blocks.
 
-- Single-level Mapping
-  - The application keeps a simple hash map from userKey → (slabID, blockIndex).
-  - No device-level FTL mapping is needed.
+- Single-Level Mapping
+  - The application maintains a simple hash map from userKey → <slab ID, block number>.
+  - No device-level Flash Translation Layer (FTL) mapping is needed, as RocksDB handles storage abstraction.
 
-- Application-driven GC
-   - When no free blocks are available, runGC() will fully erase a victim slab (quick clean) based on LRU.
+- Application-Driven GC
+  - When no free blocks are available, GC will fully erase a victim slab (quick clean) based on the Least Recently Used (LRU) policy.
 
 - Dynamic Over-Provisioning (OP)
-  - A minimal design that changes watermarks (low/high) to “expand” or “shrink” OP size depending on the number of free slabs.
+  - A minimal design that dynamically adjusts watermarks (low/high) to expand or shrink OP size based on the number of free slabs.
+  - Ensures efficient memory usage while maintaining performance.
 
 - RocksDB Emulation
-  - Instead of a real open-channel SSD driver, we store each 4KB chunk as a (key, value) pair in RocksDB.
-  - RocksDB keys look like &lt;channel ID&gt;:&lt;block ID&gt;.
- 
-# Implementation
-
-- RocksDBWrapper (Emulate Open Channel SSD)
-  - Provides a simple key-value interface to store and retrieve 4KB blocks.
-  - Supports PUT, GET, and DELETE operations on RocksDB.
-  - Each key-value pair maps to one flash block.
-
-- KeyValueCache (Slab-Based Cache Manager)
-  - Manages slabs, allocation, and eviction.
-  - Maintains active and free slab queues.
-  - Implements GC and OP strategies to optimize flash usage.
-  - Tracks access frequency for LRU-based GC.
+  - Instead of a real open-channel SSD driver, each 4KB chunk is stored as a (key, value) pair in RocksDB.
+  - RocksDB keys are formatted as <slab ID>:<block number>, aligning with the slab-based memory management in this implementation.
 
 # Dependencies
 - C++17 compiler
@@ -70,12 +57,6 @@ g++ -o flash_kv_cache flash_kv_cache.cpp \
 If install RocksDB locally:
 ```
 g++ -o flash_kv_cache flash_kv_cache.cpp -lrocksdb -std=c++17
-./flash_kv_cache
-```
-
-Or replace the path of -I and -L (where the RocksDB is installed):
-```
-g++ -o flash_kv_cache flash_kv_cache.cpp -I/usr/local/include -L/usr/local/lib -lrocksdb -std=c++17
 ./flash_kv_cache
 ```
 
