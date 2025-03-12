@@ -109,10 +109,11 @@ Setups:
 blocksPerSlab=128, numChannels=2, overprovisionRatio=0.2, Operations = 100000 </br>
 
 Throughput</br>
-![output (28)](https://github.com/user-attachments/assets/fc1ac8c4-e5a9-4a4e-9bc6-0afc5baf28b5)
+![throughtputs](https://github.com/user-attachments/assets/96a5e19c-3110-4848-9521-c176c30c5289)
 
 Latency </br>
-![output (29)](https://github.com/user-attachments/assets/bd410851-fc6d-44b0-88e1-0d5bf70e41c3)
+![latencys](https://github.com/user-attachments/assets/fdc812b1-0a6a-4c82-b7e4-6c29d3047225)
+
 
 
 # References
