@@ -61,20 +61,24 @@ g++ -o flash_kv_cache flash_kv_cache.cpp -lrocksdb -std=c++17
 ```
 
 # Expected Outputs
-Managing OP: Free slabs = 100, Reserve slabs = 0, Active slabs = 0</br>
-Post OP management: Free slabs = 80, Reserve slabs: 20, Active slabs: 0</br>
+Running Read-Write-Erase Test </br>
+Writing short data to key1... </br>
+Writing exact 4KB data to key2...</br>
+Writing long data (5000 bytes) to key3...</br>
+Checking stored data sizes...</br>
+key1 size: 4096 bytes (Expected: 4KB)</br>
+key2 size: 4096 bytes (Expected: 4KB)</br>
+key3 size: 4096 bytes (Expected: 4KB)</br>
+Size verification PASSED!</br>
+Erasing key1...</br>
+Erase test PASSED!</br>
+Free slabs: 2157 | Active slabs: 3 | Reserved slabs: 540</br>
 
-=== Running Randomized GC & OP Test with Object Size ===</br>
-Generating 10000 random operations with variable object size...</br>
-Free slabs: 0 | Active slabs: 80</br>
-Triggering GC due to low free slabs...</br>
-Managing OP: Free slabs = 0, Reserve slabs = 20, Active slabs = 80</br>
-Post OP management: Free slabs = 30, Reserve slabs: 0, Active slabs: 71</br>
-Free slabs: 30 | Active slabs: 71</br>
-Checking if old keys are deleted after GC...</br>
-Deleted keys after GC: 6524/10000</br>
-Adding new keys after GC to check reallocation...</br>
-Free slabs: 0 | Active slabs: 101</br>
+Running GC Test</br>
+Free slabs: 2159 | Active slabs: 1 | Reserved slabs: 540</br>
+Free slabs: 1159 | Active slabs: 1001 | Reserved slabs: 540</br>
+Free slabs: 159 | Active slabs: 2001 | Reserved slabs: 540</br>
+Free slabs: 1349 | Active slabs: 1001 | Reserved slabs: 350</br>
 
 # Evaluation Results
 Setups:
