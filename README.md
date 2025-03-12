@@ -90,8 +90,9 @@ Throughput</br>
 Latency </br>
 ![latencys](https://github.com/user-attachments/assets/fdc812b1-0a6a-4c82-b7e4-6c29d3047225)
 
-cache hit rate</br>
-![output (31)](https://github.com/user-attachments/assets/92eda97e-5942-4c17-93b3-c386b83ed1a9)
+cache hit rate and GC counts</br>
+![output (32)](https://github.com/user-attachments/assets/dcaa0848-29fb-42b7-905c-ec5896cee67f)
+
 
 
 # References
