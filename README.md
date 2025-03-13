@@ -54,14 +54,14 @@ brew install rocksdb
 # Build & Run
 If install RocksDB with homebrew:
 ```
-g++ -o flash_kv_cache flash_kv_cache.cpp \
+g++ -o flash_kv_cache prototype.cpp \
     -I/opt/homebrew/include \
     -L/opt/homebrew/lib -lrocksdb -std=c++17
-./flash_kv_cache
+./prototype
 ```
 If install RocksDB locally:
 ```
-g++ -o flash_kv_cache flash_kv_cache.cpp -lrocksdb -std=c++17
+g++ -o prototype prototype.cpp -lrocksdb -std=c++17
 ./flash_kv_cache
 ```
 
