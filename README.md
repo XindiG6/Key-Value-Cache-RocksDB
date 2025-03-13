@@ -4,8 +4,7 @@ This repository demonstrates a simplified implementation of a flash-based key-va
 cpp files:
  - prototype: Single write. Simple demo for basic write, read, erase operations and evaluations for system performance based on simple GC and OPS management.
  - flash-kv-cache: Enable put in batch.
- - p-benchmark: Evaluations for the simple prototype.
- - cache-benchmark:  Throughput test for the flash-kv-cache.
+ - benchmark: Performance evaluations for the simple prototype.
 
 # Background
 Designing an extremely large KVCache system, that can support TB-level vLLM pages offloaded from GPU memory or CPU memory to SSDs during the LLM inference. At the same time, the cache can also support RAG and other LLM-related applications. Therefore, it is important to design an efficient flash-based cache framework for large-scale LLMs. 
