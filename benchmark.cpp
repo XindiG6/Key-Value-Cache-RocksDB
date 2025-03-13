@@ -208,7 +208,7 @@ public:
         manage_op();
 
         if (free_slabs.empty()) {
-            std::cout << "🚨 No free slabs available after manage_op(). Exiting!\n";
+            std::cout << "no free slabs available after manage_op(). exiting!\n";
             return;
         }
 
@@ -360,7 +360,7 @@ int main() {
     KeyValueCache cache("/tmp/kvcache4");
 
     int num_operations = 1000000;
-    std::vector<int> object_sizes = {256};  // Different sizes for testing
+    std::vector<int> object_sizes = {256, 512, 1024, 2048, 4096};  // Different sizes for testing
 
     std::cout << "\n=== Running Throughput and Latency Tests ===\n";
     for (int obj_size : object_sizes) {
