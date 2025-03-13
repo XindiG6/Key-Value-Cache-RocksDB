@@ -222,7 +222,6 @@ public:
         manage_op();
 
         if (free_slabs.empty()) {
-            std::cout << "🚨 No free slabs available after manage_op(). Exiting!\n";
             return;
         }
 
