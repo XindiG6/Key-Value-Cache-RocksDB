@@ -3,14 +3,16 @@ This repository demonstrates a simplified implementation of a flash-based key-va
 
 cpp files:
  - prototype: Single write. Simple demo for basic write, read, erase operations and evaluations for system performance based on simple GC and OPS management.
- - flash-kv-cache: Enable put in batch. To achieve or compete with the preliminary results in the paper.
+ - flash-kv-cache: Enable put in batch.
+ - p-benchmark: Evaluations for the simple prototype.
+ - cache-benchmark:  Throughput test for the flash-kv-cache.
 
 # Background
 Designing an extremely large KVCache system, that can support TB-level vLLM pages offloaded from GPU memory or CPU memory to SSDs during the LLM inference. At the same time, the cache can also support RAG and other LLM-related applications. Therefore, it is important to design an efficient flash-based cache framework for large-scale LLMs. 
 Following the paper’s architecture, moving GC and mapping to the application layer eliminates the redundant FTL overhead in commercial SSDs. In this simplified version, open-channel SSD behavior is simulated via RocksDB.
 
 Why use RocksDB:
-- RocksDB makes it significantly easier to build a high-performance key-value cache without worrying about raw SSD constraints, simply focus on just cache logic.
+- RocksDB makes it significantly easier to build a high-performance key-value cache without worrying about raw SSD constraints.
 - Great flexibility and portability, making the cache system deployable across different infrastructures (local, cloud, and disaggregated systems).
 
 # Design
