@@ -96,7 +96,8 @@ Latency </br>
 ![latencys](https://github.com/user-attachments/assets/fdc812b1-0a6a-4c82-b7e4-6c29d3047225)
 
 cache hit rate and GC counts</br>
-![output (32)](https://github.com/user-attachments/assets/dcaa0848-29fb-42b7-905c-ec5896cee67f)
+![output (43)](https://github.com/user-attachments/assets/475cec3f-16ec-4340-b8bf-ec976e1007da)
+
 
 Enable put in batch. Setups: batch size = 32, blocksPerSlab=128, numChannels=12, overprovisionRatio=0.2, Operations = 1x10^6, numSlabs = 192
 ![output (41)](https://github.com/user-attachments/assets/732ea2f5-0c50-48e7-a82f-dcdb21a03d71)
