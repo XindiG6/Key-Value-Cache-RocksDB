@@ -86,7 +86,7 @@ Free slabs: 1349 | Active slabs: 1001 | Reserved slabs: 350</br>
 
 # Evaluation Results
 Setups:
-blocksPerSlab=128, numChannels=2, overprovisionRatio=0.2, Operations = 100000 </br>
+blocksPerSlab=128, numChannels=2, overprovisionRatio=0.2, Operations = 1x10^6 </br>
 
 Throughput</br>
 ![throughtputs](https://github.com/user-attachments/assets/96a5e19c-3110-4848-9521-c176c30c5289)
