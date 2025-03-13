@@ -97,7 +97,8 @@ Latency </br>
 cache hit rate and GC counts</br>
 ![output (32)](https://github.com/user-attachments/assets/dcaa0848-29fb-42b7-905c-ec5896cee67f)
 
-
+Enable put in batch. batch size = 32, blocksPerSlab=128, numChannels=12, overprovisionRatio=0.2, Operations = 1x10^6, numSlabs = 192
+![output (36)](https://github.com/user-attachments/assets/40933d26-8248-4244-a3c8-627abcdd93dd)
 
 # References
 - Paper: Shen, Z. et al. “Optimizing Flash-based Key-value Cache Systems.” HotStorage 2016
